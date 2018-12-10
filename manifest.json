@@ -1,0 +1,34 @@
+{
+  "manifest_version": "2",
+  "api_version": "1",
+  "name": "Jira Extension",
+  "description": "Jira Search Extension",
+  "developer_name": "Safa Ariman",
+  "icon": "images/icon.png",
+  "options": {
+    "query_debounce": 1
+  },
+  "preferences": [
+    {
+      "id": "url",
+      "type": "keyword",
+      "name": "Jira URL",
+      "description": "Jira URL",
+      "default_value": ""
+    },
+    {
+      "id": "username",
+      "type": "keyword",
+      "name": "Jira Username",
+      "description": "Jira Username",
+      "default_value": ""
+    },
+    {
+      "id": "password",
+      "type": "keyword",
+      "name": "Jira Password",
+      "description": "Jira Password",
+      "default_value": ""
+    }
+  ]
+}
