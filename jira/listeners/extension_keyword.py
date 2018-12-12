@@ -2,12 +2,12 @@
 """ Created by Safa Arıman on 12.12.2018 """
 import base64
 import json
+import urllib
+import urllib2
+import urlparse
+from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
 from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
-import urllib
-import urlparse
-import urllib2
-from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 
@@ -59,8 +59,6 @@ class ExtensionKeywordListener(EventListener):
             )
             return RenderResultListAction(results)
 
-        print(json.dumps(result_types))
-
         for rtype in result_types:
             for item in rtype.get('items', []):
                 key = item.get('subtitle')
@@ -70,7 +68,8 @@ class ExtensionKeywordListener(EventListener):
                     ExtensionResultItem(
                         name=title if not key else '%s - %s' % (key, title),
                         description=key,
-                        icon=self.icon_file, on_enter=OpenUrlAction(url=url))
+                        icon=self.icon_file, on_enter=OpenUrlAction(url=url)
+                    )
                 )
 
         if not results:
@@ -79,7 +78,8 @@ class ExtensionKeywordListener(EventListener):
                     name="Search '%s'" % query,
                     description='No results. Try searching something else :)',
                     icon=self.icon_file,
-                    on_enter=DoNothingAction())
+                    on_enter=DoNothingAction()
+                )
             )
 
         return RenderResultListAction(results)
