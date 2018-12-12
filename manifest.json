@@ -6,7 +6,7 @@
   "developer_name": "Safa Ariman",
   "icon": "images/jira.png",
   "options": {
-    "query_debounce": 1
+    "query_debounce": 0.5
   },
   "preferences": [
     {
@@ -18,20 +18,21 @@
     {
       "id": "url",
       "type": "input",
-      "name": "Jira URL",
-      "description": "Jira URL"
+      "name": "Jira Url",
+      "description": "Your Atlassian workspace URL. Eg.: https://example.atlassian.net/",
+      "default_value": "https://example.atlassian.net/"
     },
     {
       "id": "username",
       "type": "input",
-      "name": "Jira Username",
-      "description": "Jira Username"
+      "name": "Username or E-mail",
+      "description": "Your Atlassian username or e-mail address."
     },
     {
       "id": "password",
       "type": "input",
-      "name": "Jira Password",
-      "description": "Jira Password"
+      "name": "Password or token",
+      "description": "Your Atlassian password or token generated from https://id.atlassian.com/"
     }
   ]
 }
