@@ -4,31 +4,34 @@
   "name": "Jira Extension",
   "description": "Jira Search Extension",
   "developer_name": "Safa Ariman",
-  "icon": "images/icon.png",
+  "icon": "images/jira.png",
   "options": {
     "query_debounce": 1
   },
   "preferences": [
     {
-      "id": "url",
+      "id": "keyword",
       "type": "keyword",
+      "name": "Jira Keyword",
+      "default_value": "jira"
+    },
+    {
+      "id": "url",
+      "type": "input",
       "name": "Jira URL",
-      "description": "Jira URL",
-      "default_value": ""
+      "description": "Jira URL"
     },
     {
       "id": "username",
-      "type": "keyword",
+      "type": "input",
       "name": "Jira Username",
-      "description": "Jira Username",
-      "default_value": ""
+      "description": "Jira Username"
     },
     {
       "id": "password",
-      "type": "keyword",
+      "type": "input",
       "name": "Jira Password",
-      "description": "Jira Password",
-      "default_value": ""
+      "description": "Jira Password"
     }
   ]
 }
