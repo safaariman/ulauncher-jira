@@ -12,7 +12,7 @@
     {
       "id": "keyword",
       "type": "keyword",
-      "name": "Jira Keyword",
+      "name": "Jira",
       "default_value": "jira"
     },
     {
