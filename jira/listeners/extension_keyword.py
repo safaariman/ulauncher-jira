@@ -2,9 +2,9 @@
 """ Created by Safa Arıman on 12.12.2018 """
 import base64
 import json
-import urllib
-import urllib2
-import urlparse
+import urllib.request, urllib.parse, urllib.error
+import urllib.request, urllib.error, urllib.parse
+import urllib.parse
 from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
 from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
@@ -28,16 +28,16 @@ class ExtensionKeywordListener(EventListener):
         password = extension.preferences.get('password')
 
         token = base64.b64encode(str('%s:%s' % (user, password)).encode()).decode()
-        url = urlparse.urljoin(workspace_url, 'rest/internal/2/productsearch/search')
-        get_url = "%s?%s" % (url, urllib.urlencode({'q': query}))
-        req = urllib2.Request(get_url, headers={'Authorization': 'Basic %s' % token})
+        url = urllib.parse.urljoin(workspace_url, 'rest/internal/2/productsearch/search')
+        get_url = "%s?%s" % (url, urllib.parse.urlencode({'q': query}))
+        req = urllib.request.Request(get_url, headers={'Authorization': 'Basic %s' % token})
 
         result_types = []
 
         try:
-            response = urllib2.urlopen(req)
+            response = urllib.request.urlopen(req)
             result_types = json.loads(response.read())
-        except urllib2.HTTPError as e:
+        except urllib.error.HTTPError as e:
             if e.code == 401:
                 results.append(
                     ExtensionResultItem(
@@ -48,7 +48,7 @@ class ExtensionKeywordListener(EventListener):
                     )
                 )
             return RenderResultListAction(results)
-        except urllib2.URLError as e:
+        except urllib.error.URLError as e:
             results.append(
                 ExtensionResultItem(
                     name='Could not connect to Jira.',
