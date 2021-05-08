@@ -8,6 +8,7 @@ import urllib.parse
 from ulauncher.api.client.EventListener import EventListener
 from ulauncher.api.shared.action.DoNothingAction import DoNothingAction
 from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
+from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 
@@ -68,7 +69,9 @@ class ExtensionKeywordListener(EventListener):
                     ExtensionResultItem(
                         name=title if not key else '%s - %s' % (key, title),
                         description=key,
-                        icon=self.icon_file, on_enter=OpenUrlAction(url=url)
+                        icon=self.icon_file,
+                        on_enter=OpenUrlAction(url=url),
+                        on_alt_enter=CopyToClipboardAction(url),
                     )
                 )
 
